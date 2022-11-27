@@ -2,7 +2,7 @@
 
 <div class="row">
 
-    <form action="/stories" method="POST" class="col s12">
+    <form action="/journal" method="POST" class="col s12">
 
     <div class="row">
 
@@ -25,12 +25,27 @@
             </select>
                <label for="status">Status</label>
         </div>
+        <div class="input-field">
+            <select name="type" id="type">
+                <option value="public" selected>Food Diary</option>
+                <option value="public">Health Diary</option>
+                <option value="public">Education Diary</option>
+                <option value="public">Kids Diary</option>
+                <option value="public">Secret Diary</option>
+                <option value="public">Work Diary</option>
+                <option value="public">Finance Diary</option>
+                <option value="public">Electronic Diary</option>
+                <option value="public">Relationship Diary</option>
+             
+        </select>
+               <label for="type">Type</label>
+        </div>
     </div>
     
     <div class="row">
 
         <div class="input-field">
-            <h5>Tell US Your Story:</h5>
+            <h5>How was your day?:</h5>
             <textarea name="body" id="body"></textarea>
         </div>
     </div>

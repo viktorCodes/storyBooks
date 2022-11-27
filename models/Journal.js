@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose')
 
-const StorySchema = new mongoose.Schema({
+const JournalSchema = new mongoose.Schema({
      title: {
         type: String,
         required: true,
@@ -16,6 +16,11 @@ const StorySchema = new mongoose.Schema({
         default: 'public',
         enum: ['public', 'private'],
     },
+    type: {
+        type: String,
+        default: 'food',
+        enum: ['health', 'education', 'kids', 'secret', 'work', 'finance', 'electronic', 'relationship' ],
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -27,4 +32,4 @@ const StorySchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Story', StorySchema)
+module.exports = mongoose.model('Journal', JournalSchema)

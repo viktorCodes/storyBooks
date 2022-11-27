@@ -3,24 +3,24 @@ const router = express.Router()
 const { ensureAuth} = require('../middleware/auth')
 
 
-let Story = require('../models/story')
+let Journal = require('../models/journal')
 
 
 //@desc Show Add page
-//Route GET /stories/add
+//Route GET /journals/add
 
 router.get('/add', ensureAuth, (request, response) => {
-    response.render('stories/add')
+    response.render('journals/add')
 })
 
 
 //@desc Process add form
-//Route  POST /stories
+//Route  POST /journals
 
 router.post('/', ensureAuth, async  (request, response) => {
     try {
         request.body.user = request.user.id
-        await Story.create(request.body)
+        await Journal.create(request.body)
         response.redirect('/dashboard')
     } catch (err) {
          console.error(err)
@@ -29,18 +29,18 @@ router.post('/', ensureAuth, async  (request, response) => {
 })
 
 
-//@desc Show All Stories
-//Route GET /stories
+//@desc Show All Journals
+//Route GET /journal
 
 router.get('/', ensureAuth, async (request, response) => {
     try {
-      const stories = await Story.find({ status: 'public' })
+      const journals = await Journal.find({ status: 'public' })
         .populate('user')
         .sort({ createdAt: 'desc' })
         .lean()
   
-      response.render('stories/index', {
-        stories,
+      response.render('journal/index', {
+        journals,
       })
     } catch (err) {
       console.error(err)
@@ -51,20 +51,20 @@ router.get('/', ensureAuth, async (request, response) => {
 
 
   // @desc    Show single story
-// @route   GET /stories/:id
+// @route   GET /journal/:id
 router.get('/:id', ensureAuth, async (request, response) => {
     try {
-      let story = await Story.findById(request.params.id).populate('user').lean()
+      let journal = await Journal.findById(request.params.id).populate('user').lean()
   
-      if (!story) {
+      if (!journal) {
         return response.render('error/404')
       }
   
-      if (story.user._id != request.user.id && story.status == 'private') {
+      if (journal.user._id != request.user.id && journal.status == 'private') {
         response.render('error/404')
       } else {
-        response.render('stories/show', {
-          story,
+        response.render('journal/show', {
+          journal,
         })
       }
     } catch (err) {
@@ -74,23 +74,23 @@ router.get('/:id', ensureAuth, async (request, response) => {
   })
   
 //@desc Show Edit page
-//Route GET /stories/edit/:id
+//Route GET /journal/edit/:id
 
 router.get('/edit/:id', ensureAuth, async (request, response) => {
     try {
-      const story = await Story.findOne({
+      const journal = await Journal.findOne({
         _id: request.params.id,
       }).lean()
   
-      if (!story) {
+      if (!journal) {
         return response.render('error/404')
       }
   
-      if (story.user != request.user.id) {
-        response.redirect('/stories')
+      if (journal.user != request.user.id) {
+        response.redirect('/journal')
       } else {
-        response.render('stories/edit', {
-          story,
+        response.render('journal/edit', {
+          journal,
         })
       }
     } catch (err) {
@@ -100,21 +100,21 @@ router.get('/edit/:id', ensureAuth, async (request, response) => {
   })
 
 
-//@desc Update Story
-//Route PUT /stories/:id
+//@desc Update Journal.
+//Route PUT /journal/:id
 
 router.put('/:id', ensureAuth, async (request, response) => {
     try {
-      let story = await Story.findById(request.params.id).lean()
+      let journal = await Journal.findById(request.params.id).lean()
   
-      if (!story) {
+      if (!journal) {
         return response.render('error/404')
       }
   
-      if (story.user != request.user.id) {
-        response.redirect('/stories')
+      if (journal.user != request.user.id) {
+        response.redirect('/journal')
       } else {
-        story = await Story.findOneAndUpdate({ _id: request.params.id }, request.body, {
+        journal = await Journal.findOneAndUpdate({ _id: request.params.id }, request.body, {
           new: true,
           runValidators: true,
         })
@@ -127,20 +127,20 @@ router.put('/:id', ensureAuth, async (request, response) => {
     }
   })
 
-// @desc    Delete story
-// @route   DELETE /stories/:id
+// @desc    Delete Journal
+// @route   DELETE /journal/:id
 router.delete('/:id', ensureAuth, async (request, response) => {
     try {
-      let story = await Story.findById(request.params.id).lean()
+      let journal = await Journal.findById(request.params.id).lean()
   
-      if (!story) {
+      if (!journal) {
         return response.render('error/404')
       }
   
-      if (story.user != request.user.id) {
-        response.redirect('/stories')
+      if (journal.user != request.user.id) {
+        response.redirect('/journal')
       } else {
-        await Story.remove({ _id: request.params.id })
+        await Journal.remove({ _id: request.params.id })
         response.redirect('/dashboard')
       }
     } catch (err) {
@@ -149,19 +149,19 @@ router.delete('/:id', ensureAuth, async (request, response) => {
     }
   })
 
-  // @desc    User stories
-// @route   GET /stories/user/:userId
+  // @desc    User journals
+// @route   GET /journal/user/:userId
 router.get('/user/:userId', ensureAuth, async (request, response) => {
     try {
-      const stories = await Story.find({
+      const journals = await Journal.find({
         user: request.params.userId,
         status: 'public',
       })
         .populate('user')
         .lean()
   
-      response.render('stories/index', {
-        stories,
+      response.render('journals/index', {
+        journals,
       })
     } catch (err) {
       console.error(err)

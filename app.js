@@ -6,7 +6,6 @@ const morgan = require('morgan')
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const passport = require('passport')
-//const bodyParser = require('body-parser')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db')
@@ -25,7 +24,7 @@ const app = express()
 
 //Body Parser
 
-app.use(express.urlencoded({ extended: false}))
+app.use(express.urlencoded({ extended: true}))
 app.use(express.json())
 
 // Method override
@@ -96,9 +95,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Routes
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
-app.use('/stories', require('./routes/stories'))
+app.use('/journal', require('./routes/journals'))
+app.use('/privatejournal', require('./routes/privatejournal'))
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 2000
 
 
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on ${PORT}`))

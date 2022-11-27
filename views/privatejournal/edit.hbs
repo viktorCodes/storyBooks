@@ -1,0 +1,63 @@
+<h3>Edit  Private Journal</h3>
+
+<div class="row">
+
+    <form action="/privatejournal/{{privatejournal._id}}" method="POST" class="col s12">
+   <input type="hidden" name="_method" value="PUT">
+    <div class="row">
+
+        <div class="input-field">
+            <input type="text" id="title" name="title" value="{{privatejournal.title}}">
+            <label for="title">Title</label>
+        </div>
+    </div>
+
+      
+
+    <div class="row">
+
+        <div class="input-field">
+            <select name="status" id="status">
+                {{#select privatejournal.status}}
+                <option value="private" selected>Private</option>
+                <option value="public">Public</option>
+                {{/select}}
+             
+            </select>
+               <label for="status">Status</label>
+        </div>
+    </div>
+     <div class="input-field">
+            <select name="type" id="type">
+                {{#select privatejournal.type}}
+                <option value="private" selected>Food Diary</option>
+                <option value="private">Health Diary</option>
+                <option value="private">Education Diary</option>
+                <option value="private">Kids Diary</option>
+                <option value="private">Secret Diary</option>
+                <option value="private">Work Diary</option>
+                <option value="private">Finance Diary</option>
+                <option value="private">Electronic Diary</option>
+                <option value="private">Relationship Diary</option>
+                {{/select}}
+             
+        </select>
+               <label for="type">Type</label>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="input-field">
+            <h5>Tell US Your Story:</h5>
+            <textarea name="body" id="body">{{privatejournal.body}}</textarea>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <input type="submit" value="Save" class="btn">
+        <a href="/dashboard" class="btn orange">Cancel</a>
+    </div>
+    </form>
+
+</div>

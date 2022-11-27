@@ -6,6 +6,7 @@ const router = express.Router()
 //@desc Auth with Google
 //Route GET /auth/google
 
+
 router.get('/google', passport.authenticate('google', {scope: ['profile']}) )
     
 

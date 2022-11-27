@@ -1,8 +1,8 @@
 <h6>Dashboard</h6>
 <h3>Welcome {{name}}</h3>
-<p>Here are your Stories</p>
+<p>This is your Journal</p>
 
-{{#if stories}}
+{{#if journal}}
 
 <table class="striped">
     <thead>
@@ -10,14 +10,15 @@
             <th>Title</th>
             <th>Date</th>
             <th>Status</th>
+            <th>Type</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        {{#each stories}}
+        {{#each journal}}
   <tr>
     <td>
-        <a href="/stories/{{_id}}">{{title}}</a>
+        <a href="/journals/{{_id}}">{{title}}</a>
     </td>
     <td>
         {{formatDate createdAt 'MMMM Do YYYY, h:mm:s a'}}
@@ -26,11 +27,14 @@
         <span class="dash-status">{{status}}</span>
     </td>
     <td>
-        <a href="/stories/edit/{{_id}}" class="btn btn-float">
+        <span class="dash-status">{{type}}</span>
+    </td>
+    <td>
+        <a href="/journals/edit/{{_id}}" class="btn btn-float">
                     <i class="fas fa-edit"></i>
                 </a>
 
-                <form action="/stories/{{_id}}" method="POST" id="delete-form">
+                <form action="/journals/{{_id}}" method="POST" id="delete-form">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn red">
                         <i class="fas fa-trash"></i>
@@ -43,5 +47,5 @@
 </table>
 
 {{else}}
-  <p>You have not created any stories</p>
+  <p>You have not created a journal</p>
 {{/if}}

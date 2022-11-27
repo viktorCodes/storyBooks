@@ -1,8 +1,8 @@
-<h1>Stories</h1>
+<h1>Private Journals</h1>
 
 <div class="row">
 
-    {{#each stories}}
+    {{#each privatejournal}}
 
        <div class="col s12 m4">
         <div class="card">
@@ -18,12 +18,12 @@
                 <br>
                 <div class="chip">
                     <img src="{{user.image}}" alt="">
-                    <a href="/stories/user/{{user._id}}">{{user.deisplayName}}</a>
+                    <a href="/privatejournal/user/{{user._id}}">{{user.deisplayName}}</a>
                 </div>
                 </div>
 
                 <div class="card-action center-align">
-                    <a href="/stories/{{_id}}" class="btn-grey">Read More</a>
+                    <a href="/privatejournal/{{_id}}" class="btn-grey">Read More</a>
                 </div>
         </div>
        </div>
@@ -31,7 +31,7 @@
 
     {{else}}
 
-        <p>No stories to display</p>
+        <p>No journal to display</p>
 
     {{/each}}
 </div>

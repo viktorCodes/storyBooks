@@ -23,10 +23,19 @@
     "mongoose": "^6.5.3",
     "morgan": "^1.10.0",
     "passport": "^0.6.0",
-    "passport-google-oauth20": "^2.0.0"
+    "passport-google-oauth20": "^2.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
     "nodemon": "^2.0.19"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viktorCodes/storyBooks.git"
+  },
+  "bugs": {
+    "url": "https://github.com/viktorCodes/storyBooks/issues"
+  },
+  "homepage": "https://github.com/viktorCodes/storyBooks#readme"
 }
