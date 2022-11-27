@@ -18,7 +18,7 @@
         {{#each journal}}
   <tr>
     <td>
-        <a href="/journals/{{_id}}">{{title}}</a>
+        <a href="/journal/{{_id}}">{{title}}</a>
     </td>
     <td>
         {{formatDate createdAt 'MMMM Do YYYY, h:mm:s a'}}
@@ -30,11 +30,11 @@
         <span class="dash-status">{{type}}</span>
     </td>
     <td>
-        <a href="/journals/edit/{{_id}}" class="btn btn-float">
+        <a href="/journal/edit/{{_id}}" class="btn btn-float">
                     <i class="fas fa-edit"></i>
                 </a>
 
-                <form action="/journals/{{_id}}" method="POST" id="delete-form">
+                <form action="/journal/{{_id}}" method="POST" id="delete-form">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit" class="btn red">
                         <i class="fas fa-trash"></i>
@@ -47,5 +47,5 @@
 </table>
 
 {{else}}
-  <p>You have not created a journal</p>
+  <p>You have not created any journals</p>
 {{/if}}

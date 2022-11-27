@@ -10,7 +10,7 @@ let Journal = require('../models/journal')
 //Route GET /journals/add
 
 router.get('/add', ensureAuth, (request, response) => {
-    response.render('journals/add')
+    response.render('journal/add')
 })
 
 
