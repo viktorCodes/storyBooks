@@ -160,7 +160,7 @@ router.get('/user/:userId', ensureAuth, async (request, response) => {
         .populate('user')
         .lean()
   
-      response.render('journals/index', {
+      response.render('journal/index', {
         journals,
       })
     } catch (err) {
