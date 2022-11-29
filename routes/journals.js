@@ -7,7 +7,7 @@ let Journal = require('../models/journal')
 
 
 //@desc Show Add page
-//Route GET /journals/add
+//Route GET /journal/add
 
 router.get('/add', ensureAuth, (request, response) => {
     response.render('journal/add')
@@ -50,7 +50,7 @@ router.get('/', ensureAuth, async (request, response) => {
   
 
 
-  // @desc    Show single story
+  // @desc    Show single journal
 // @route   GET /journal/:id
 router.get('/:id', ensureAuth, async (request, response) => {
     try {

@@ -16,11 +16,7 @@ const JournalSchema = new mongoose.Schema({
         default: 'public',
         enum: ['public', 'private'],
     },
-    type: {
-        type: String,
-        default: 'food',
-        enum: ['health', 'education', 'kids', 'secret', 'work', 'finance', 'electronic', 'relationship' ],
-    },
+   
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

@@ -30,15 +30,15 @@
      <div class="input-field">
             <select name="type" id="type">
                 {{#select privatejournal.type}}
-                <option value="private" selected>Food Diary</option>
-                <option value="private">Health Diary</option>
-                <option value="private">Education Diary</option>
-                <option value="private">Kids Diary</option>
-                <option value="private">Secret Diary</option>
-                <option value="private">Work Diary</option>
-                <option value="private">Finance Diary</option>
-                <option value="private">Electronic Diary</option>
-                <option value="private">Relationship Diary</option>
+                <option value="public" selected>Food Diary</option>
+                <option value="public">Health Diary</option>
+                <option value="public">Education Diary</option>
+                <option value="public">Kids Diary</option>
+                <option value="public">Secret Diary</option>
+                <option value="public">Work Diary</option>
+                <option value="public">Finance Diary</option>
+                <option value="public">Electronic Diary</option>
+                <option value="public">Relationship Diary</option>
                 {{/select}}
              
         </select>
@@ -48,7 +48,7 @@
     <div class="row">
 
         <div class="input-field">
-            <h5>Tell US Your Story:</h5>
+            <h5>What happened today?:</h5>
             <textarea name="body" id="body">{{privatejournal.body}}</textarea>
         </div>
     </div>
